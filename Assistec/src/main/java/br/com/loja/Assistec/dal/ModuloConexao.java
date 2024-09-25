@@ -7,7 +7,7 @@ public class ModuloConexao {
 	public static Connection connector() {
 		Connection conexao = null;
 		String driver = "com.mysql.cj.jbdc.Driver";
-		String url = "jdbc:mysql://localhoost:3306/lojabd";
+		String url = "jdbc:mysql://localhost:3306/lojabd";
 		String user = "root";
 		String password = "aluno";
 		try {

@@ -1,10 +1,15 @@
 package br.com.loja.Assistec;
 
+import br.com.loja.Assistec.view.LoginView;
+import br.com.loja.controller.LoginController;
+
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        LoginView view = new LoginView();
+        LoginController controller = new LoginController(view);
+        view.setVisible(true);
     }
 }
