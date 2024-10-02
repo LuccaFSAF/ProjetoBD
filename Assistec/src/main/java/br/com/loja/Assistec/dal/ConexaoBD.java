@@ -3,8 +3,8 @@ package br.com.loja.Assistec.dal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ModuloConexao {
-	public static Connection connector() {
+public class ConexaoBD {
+	public static Connection getConnection() {
 		Connection conexao = null;
 		String driver = "com.mysql.cj.jbdc.Driver";
 		String url = "jdbc:mysql://localhost:3306/lojabd";

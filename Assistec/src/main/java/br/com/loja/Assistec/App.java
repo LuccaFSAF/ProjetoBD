@@ -9,7 +9,7 @@ import br.com.loja.controller.LoginController;
 public class App {
     public static void main(String[] args) {
         LoginView view = new LoginView();
-        LoginController controller = new LoginController(view);
+        view.setLocationRelativeTo(null);
         view.setVisible(true);
     }
 }
