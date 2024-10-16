@@ -10,7 +10,17 @@ import br.com.loja.Assistec.dal.ConexaoBD;
 public class LoginDAO extends GenericDAO {
 
 	public Boolean bancoOnLine() throws SQLException {
-		return getConnection().isValid(0);
+			Connection valor = getConnection();
+			if (valor != null) {
+				try {
+					getConnection().close();
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				return true;
+			} else
+				return false;
 	}
 
 	public Usuario autenticar(String login, String senha) throws SQLException {
