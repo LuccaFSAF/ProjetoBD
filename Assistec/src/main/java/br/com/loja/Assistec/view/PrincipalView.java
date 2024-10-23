@@ -11,6 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -79,7 +80,12 @@ public class PrincipalView extends JFrame {
 		JMenuItem menuUser = new JMenuItem("Usuarios");
 		menuUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarUsuarios();
+				try {
+					ListarUsuarios();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		MenuCadastro.add(menuUser);
@@ -107,7 +113,7 @@ public class PrincipalView extends JFrame {
 			MenuRelatorio.setEnabled(true);
 		}
 	}
-	protected void ListarUsuarios() {
+	protected void ListarUsuarios() throws SQLException {
 		// TODO Auto-generated method stub
 		ListarUsersView frame = new ListarUsersView();
 		frame.setLocationRelativeTo(frame);
