@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import br.com.loja.assistec.model.LoginDAO;
 import br.com.loja.assistec.model.Usuario;
 import br.com.loja.assistec.view.LoginView;
+import br.com.loja.assistec.view.MessagemView;
 import br.com.loja.assistec.view.PrincipalView;
 
 public class LoginController {
@@ -64,17 +65,21 @@ public class LoginController {
 		String senha = view.getSenha();
 		try {
 			if (!dao.bancoOnline()) {
-				view.mostrarMensagem("Banco de dados desconectado!", "Erro");
+				//view.mostrarMensagem("Banco de dados desconectado!", "Erro");
+				new MessagemView("Banco de Dados desconectado!", 0); 
 			} else if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 				listaDadosView = autenticar(login, senha);
 				if (listaDadosView != null) {
-					view.mostrarMensagem("Bem vindo " + listaDadosView.get(0) + " acesso liberado!", "Informação");
+					//view.mostrarMensagem("Bem vindo " + listaDadosView.get(0) + " acesso liberado!", "Informação");
+					new MessagemView("Bem Vindo" + listaDadosView.get(0) + "acesso liberado", 3);
 					view.dispose();
 				} else {
-					view.mostrarMensagem("Usuário ou senha inválidos!", "Atenção");
+					//view.mostrarMensagem("Usuário ou senha inválidos!", "Atenção");
+					new MessagemView("Usuario ou senha incorretos!", 2);
 				}
 			} else {
-				view.mostrarMensagem("Verifique as informações!", "Atenção");
+				//view.mostrarMensagem("Verifique as informações!", "Atenção");
+				new MessagemView("Verifique as infotmações!", 1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
