@@ -75,4 +75,17 @@ public class ListarUsuariosViews extends JFrame {
 		tabela.addMouseListener(listener);
 	}
 	
+	public int getlinhaSelecionada() {
+		return tabela.getSelectedRow();
+	}
+	
+	public Object getvalorLinhaColuna(int linha, int coluna) {
+		return tabela.getValueAt(linha, coluna);
+	}
+
+	public void atualizarTabelaUsuario(ArrayList<Usuario> novosUsuarios) {
+		// TODO Auto-generated method stub
+		usuarioTableModel.carregarDados(novosUsuarios);
+	}
+	
 	}
