@@ -1,6 +1,7 @@
 package br.com.loja.assistec.view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
 import br.com.loja.assistec.model.Usuario;
@@ -69,6 +71,12 @@ public class ListarUsuariosViews extends JFrame {
 		// TODO Auto-generated method stub
 		usuarioTableModel = new UsuarioTableModel(listaUsuarios);
 		tabela.setModel(usuarioTableModel);
+		rowSorter = new TableRowSorter(usuarioTableModel);
+		tabela.setRowSorter(rowSorter);
+	}
+	
+	public void addBuscarKeyListener(KeyListener listener) {
+		txtLocalizar.addKeyListener(listener);
 	}
 	
 	public void addTabelaMouseListener(MouseListener listener) {
@@ -86,6 +94,16 @@ public class ListarUsuariosViews extends JFrame {
 	public void atualizarTabelaUsuario(ArrayList<Usuario> novosUsuarios) {
 		// TODO Auto-generated method stub
 		usuarioTableModel.carregarDados(novosUsuarios);
+	}
+
+	public void filtrarRegistros() {
+		// TODO Auto-generated method stub
+		String busca = txtLocalizar.getText().trim();
+		if(busca.isEmpty()) {
+			rowSorter.setRowFilter(null);
+		}else {
+			rowSorter.setRowFilter(RowFilter.regexFilter("(?i)"+busca));
+		}
 	}
 	
 	}
